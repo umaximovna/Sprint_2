@@ -1,1 +1,16 @@
 # qa_python
+
+Реализован класс TestBooksCollector (объединяет набор тестов, которыми покрывается приложение BooksCollector).
+Реализованы тесты:
+
+test_add_new_book_add_two_books Добавление двух книг
+test_set_book_rating_set_rating_less_than_one_rating_not_change Проверка проставления книге рейтинга меньше 1
+test_set_book_rating_set_rating_more_than_ten_rating_not_change Проверка проставления книге рейтинга больше 10
+test_get_book_rating_get_not_found_book_rating_none Проверка получения рейтинга несуществующей книги
+test_get_books_with_specific_rating_get_two_books Проверка получения списка книг с определенным рейтингом
+test_get_books_rating_get_dict_two_books Проверка получения словаря books_rating
+test_add_book_in_favorites_add_exist_in_book_rating_list_one_book Проверка добавления книги, существующей в словаре books_rating, в Избранное
+test_add_book_in_favorites_add_not_found_in_book_rating_empty_list Проверка добавления книги, отсутствующей в словаре books_rating, в Избранное
+test_delete_book_from_favorites_delete_exist_in_favorites Проверка удаления существующей в Избранном книги из Избранного
+test_get_list_of_favorites_books_get_two_books Проверка получения списка избранных книг
+
