@@ -28,7 +28,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_rating('Гордость и предубеждение и зомби', 11)
-        assert collector.get_book_rating('Гордость и предубеждение и зомби') == 1, 'Assigned a rating value more than 11, must be between 1 and 10'
+        assert collector.get_book_rating('Гордость и предубеждение и зомби') == 1, 'Assigned a rating value more than 10, must be between 1 and 10'
 
     # проверка получения рейтинга несуществующей книги
     def test_get_book_rating_get_not_found_book_rating_none(self):
