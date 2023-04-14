@@ -21,20 +21,20 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_rating('Гордость и предубеждение и зомби', 0)
-        assert collector.get_books_rating().get('Гордость и предубеждение и зомби') == 1
+        assert collector.get_book_rating('Гордость и предубеждение и зомби') == 1, 'Assigned a rating value less than 1, must be between 1 and 10'
 
     # проверка проставления книге рейтинга больше 10
     def test_set_book_rating_set_rating_more_than_ten_rating_not_change(self):
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_rating('Гордость и предубеждение и зомби', 11)
-        assert collector.get_books_rating().get('Гордость и предубеждение и зомби') == 1
+        assert collector.get_book_rating('Гордость и предубеждение и зомби') == 1, 'Assigned a rating value more than 11, must be between 1 and 10'
 
     # проверка получения рейтинга несуществующей книги
     def test_get_book_rating_get_not_found_book_rating_none(self):
         collector = BooksCollector()
         collector.add_new_book('Человек, который смеётся')
-        assert collector.get_books_rating().get('Гордость и предубеждение и зомби') == None
+        assert collector.get_book_rating('Гордость и предубеждение и зомби') == None
 
     # проверка получения списка книг с определенным рейтингом
     def test_get_books_with_specific_rating_get_two_books(self):
@@ -46,7 +46,7 @@ class TestBooksCollector:
         collector.add_new_book('Американская трагедия')
         collector.set_book_rating('Американская трагедия', 9)
         result = collector.get_books_with_specific_rating(8)
-        assert len(result) == 2 and sorted(['Человек, который смеётся', 'Поющие в терновнике']) == sorted(result)
+        assert len(result) == 2 and ['Человек, который смеётся', 'Поющие в терновнике'] == result
 
     # проверка получения словаря books_rating
     def test_get_books_rating_get_dict_two_books(self):
@@ -70,7 +70,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Человек, который смеётся')
         collector.add_book_in_favorites('Обыкновенная история')
-        assert collector.get_list_of_favorites_books() == []
+        assert collector.get_list_of_favorites_books() == [], 'Book that is not in the [books_rating] dict must not added to favorites'
 
     # проверка удаления существующей в Избранном книги из Избранного
     def test_delete_book_from_favorites_delete_exist_in_favorites(self):
@@ -88,10 +88,3 @@ class TestBooksCollector:
         collector.add_new_book('Титан')
         collector.add_book_in_favorites('Титан')
         assert collector.get_list_of_favorites_books() == ['Финансист', 'Титан']
-
-
-
-
-
-
-
